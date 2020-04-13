@@ -1,9 +1,9 @@
 ---
-title: 局域网安装配置Git服务器并实现外网访问
+title: 局域网安装配置Git服务器并实现往外访问和工作区同步到服务器
 date: 2020-03-28 23:56:44
 tags:
+  - git
 ---
-# 局域网安装配置Git服务器并实现往外访问和工作区同步到服务器
 
 最近在折腾Git，想尝试自己建一个Git服务器。闲置的笔记本正好可以用来做Server，建立过程中也遇到一些问题，故在此记录。
 
@@ -13,6 +13,8 @@ tags:
 - 已做好端口映射，因为是通过SSH服务，端口映射为内网22，外网出于安全选了一个其它端口，因此外网访问时地址为：`ssh://domain:proxy/directory/to/githubrepo`
 
 建立Git服务器过程主要参考[廖雪峰教程](https://www.liaoxuefeng.com/wiki/896043488029600/899998870925664)
+
+<!-- more -->
 
 ## 1 安装Git
 
@@ -133,11 +135,11 @@ IdentityFile ~/.ssh/生成的证书名字
   在`post-receive`中输入以下内容：
 
   ```
-  #!/bin/sh  
+  #!/bin/sh
   export LANG=zh_CN.UTF-8
   cd /home/workspace/test  //这个是你每次要同步的文件夹
   unset GIT_DIR  //git执行自动脚本的时候有执行一些自定义变量,所以我们在这里unset一下
-  git pull 
+  git pull
   ```
 
   **注意**，这里因为生成和编辑`post-receive`时用的是`sudo`命令，`post-receive`所有者是`root`用户，要改成`git`用户才能生效。我在这里琢磨了半天才搞明白，改之前一直不能同步。
