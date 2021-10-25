@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -203,13 +203,13 @@
 
       
         <p>为了给这个博客加个评论功能，网上搜索一番，找到N个教程，做了M个尝试，最后发现自己蠢死了，我用的Next主题版本自带gitalk功能，简单配置一下就行了。</p>
-<h2 id="申请Github的OAuth应用程序"><a href="#申请Github的OAuth应用程序" class="headerlink" title="申请Github的OAuth应用程序"></a>申请Github的OAuth应用程序</h2><p><a href="https://github.com/settings/developers" target="_blank" rel="noopener">申请地址</a><br>登陆后点击右上的<code>New OAuth APP</code>按钮，看下图填写(盗一个知乎的图）：<br><img src="https://pic2.zhimg.com/80/v2-054ceed11a9a35e0855136ef21061b81_720w.jpg" alt="newoauthapp"><br>需要注意的是，如果绑定了自己的域名，这里<code>主页网址</code>和<code>授权回调网址</code>请填写自己的域名地址，比如我填写的就是<code>https://blog.muzy.cc</code>。</p>
+<h2 id="申请Github的OAuth应用程序"><a href="#申请Github的OAuth应用程序" class="headerlink" title="申请Github的OAuth应用程序"></a>申请Github的OAuth应用程序</h2><p><a target="_blank" rel="noopener" href="https://github.com/settings/developers">申请地址</a><br>登陆后点击右上的<code>New OAuth APP</code>按钮，看下图填写(盗一个知乎的图）：<br><img src="https://pic2.zhimg.com/80/v2-054ceed11a9a35e0855136ef21061b81_720w.jpg" alt="newoauthapp"><br>需要注意的是，如果绑定了自己的域名，这里<code>主页网址</code>和<code>授权回调网址</code>请填写自己的域名地址，比如我填写的就是<code>https://blog.muzy.cc</code>。</p>
 <p>注册后会得到<code>Client ID</code>和<code>Client Secret</code>两个参数。</p>
 <h2 id="配置Next主题"><a href="#配置Next主题" class="headerlink" title="配置Next主题"></a>配置Next主题</h2><p>我的Next主题版本是<code>NexT.Muse v7.7.1</code>，可以直接配置gitalk。打开位于<code>/themes/next/</code>下的<code>_config.yml</code>文件，找到<code>gitalk</code>模块，按照以下配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https:&#x2F;&#x2F;gitalk.github.io, https:&#x2F;&#x2F;github.com&#x2F;gitalk&#x2F;gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: sineks # GitHub repo owner</span><br><span class="line">  repo: sineks.github.io # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxxxxx # 申请的Client ID</span><br><span class="line">  client_secret: xxxxxxxxxxxxxxxxxxxxxx # 申请的Client Secret</span><br><span class="line">  admin_user: sineks # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: true # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk&#39;s display language depends on user&#39;s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: sineks # GitHub repo owner</span><br><span class="line">  repo: sineks.github.io # Repository name to store issues</span><br><span class="line">  client_id: xxxxxxxxxxx # 申请的Client ID</span><br><span class="line">  client_secret: xxxxxxxxxxxxxxxxxxxxxx # 申请的Client Secret</span><br><span class="line">  admin_user: sineks # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: true # Facebook-like distraction free mode</span><br><span class="line">  # Gitalk&#x27;s display language depends on user&#x27;s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language:</span><br></pre></td></tr></table></figure>
 
 <p>填好配置后保存。然后：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s &#x2F;&#x2F;本地测试一下，没问题再deploy</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s //本地测试一下，没问题再deploy</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>不出意外在文章尾部应该就能看到gitalk模块了。第一次gitalk模块还不能用，提示什么<code>no issue</code>，需要自己登陆github后评论一下，相当于激活了，忘记截图，大概就这么回事吧。</p>
 <p>整个过程简单方便，不用什么新建这个文件修改那个配置的。搞定手工！</p>
 
@@ -233,10 +233,7 @@
     <a href="/2020/setup-git-server-on-lan-server/" rel="prev" title="局域网安装配置Git服务器并实现往外访问和工作区同步到服务器">
       <i class="fa fa-chevron-left"></i> 局域网安装配置Git服务器并实现往外访问和工作区同步到服务器
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/testnew/" rel="next" title="testnew">
-      testnew <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -297,7 +294,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#申请Github的OAuth应用程序"><span class="nav-number">1.</span> <span class="nav-text">申请Github的OAuth应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Next主题"><span class="nav-number">2.</span> <span class="nav-text">配置Next主题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7Github%E7%9A%84OAuth%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">申请Github的OAuth应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AENext%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">配置Next主题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -311,7 +308,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -355,7 +352,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">iubuntu</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
