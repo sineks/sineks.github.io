@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>testnew</title>
+    <link href="/2021/testnew/"/>
+    <url>/2021/testnew/</url>
+    
+    <content type="html"><![CDATA[<p><strong>更换电脑后，测试一下Hexo</strong></p><p>看看是否能发布成功</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hexo博客Next主题添加Gitalk评论插件</title>
+    <link href="/2020/add-gitalk-to-hexo/"/>
+    <url>/2020/add-gitalk-to-hexo/</url>
+    
+    <content type="html"><![CDATA[<p>为了给这个博客加个评论功能，网上搜索一番，找到N个教程，做了M个尝试，最后发现自己蠢死了，我用的Next主题版本自带gitalk功能，简单配置一下就行了。</p><h2 id="申请Github的OAuth应用程序"><a href="#申请Github的OAuth应用程序" class="headerlink" title="申请Github的OAuth应用程序"></a>申请Github的OAuth应用程序</h2><p><a href="https://github.com/settings/developers">申请地址</a><br>登陆后点击右上的<code>New OAuth APP</code>按钮，看下图填写(盗一个知乎的图）：<br><img src="https://pic2.zhimg.com/80/v2-054ceed11a9a35e0855136ef21061b81_720w.jpg" alt="newoauthapp"><br>需要注意的是，如果绑定了自己的域名，这里<code>主页网址</code>和<code>授权回调网址</code>请填写自己的域名地址，比如我填写的就是<code>https://blog.muzy.cc</code>。</p><p>注册后会得到<code>Client ID</code>和<code>Client Secret</code>两个参数。</p><h2 id="配置Next主题"><a href="#配置Next主题" class="headerlink" title="配置Next主题"></a>配置Next主题</h2><p>我的Next主题版本是<code>NexT.Muse v7.7.1</code>，可以直接配置gitalk。打开位于<code>/themes/next/</code>下的<code>_config.yml</code>文件，找到<code>gitalk</code>模块，按照以下配置：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Gitalk</span><br><span class="hljs-comment"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span><br><span class="hljs-attr">gitalk:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">github_id:</span> <span class="hljs-string">sineks</span> <span class="hljs-comment"># GitHub repo owner</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">sineks.github.io</span> <span class="hljs-comment"># Repository name to store issues</span><br>  <span class="hljs-attr">client_id:</span> <span class="hljs-string">xxxxxxxxxxx</span> <span class="hljs-comment"># 申请的Client ID</span><br>  <span class="hljs-attr">client_secret:</span> <span class="hljs-string">xxxxxxxxxxxxxxxxxxxxxx</span> <span class="hljs-comment"># 申请的Client Secret</span><br>  <span class="hljs-attr">admin_user:</span> <span class="hljs-string">sineks</span> <span class="hljs-comment"># GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br>  <span class="hljs-attr">distraction_free_mode:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Facebook-like distraction free mode</span><br>  <span class="hljs-comment"># Gitalk&#x27;s display language depends on user&#x27;s browser or system environment</span><br>  <span class="hljs-comment"># If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br>  <span class="hljs-comment"># Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br>  <span class="hljs-attr">language:</span><br></code></pre></td></tr></table></figure><p>填好配置后保存。然后：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">hexo clean<br>hexo g<br>hexo s <span class="hljs-regexp">//</span>本地测试一下，没问题再deploy<br>hexo d<br></code></pre></td></tr></table></figure><p>不出意外在文章尾部应该就能看到gitalk模块了。第一次gitalk模块还不能用，提示什么<code>no issue</code>，需要自己登陆github后评论一下，相当于激活了，忘记截图，大概就这么回事吧。</p><p>整个过程简单方便，不用什么新建这个文件修改那个配置的。搞定手工！</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>局域网安装配置Git服务器并实现往外访问和工作区同步到服务器</title>
+    <link href="/2020/setup-git-server-on-lan-server/"/>
+    <url>/2020/setup-git-server-on-lan-server/</url>
+    
+    <content type="html"><![CDATA[<p>最近在折腾Git，想尝试自己建一个Git服务器。闲置的笔记本正好可以用来做Server，建立过程中也遇到一些问题，故在此记录。</p><p>首先，整个环境为：</p><ul><li>局域网内笔记本安装Ubuntu Server 18.0.4</li><li>有外网IP并已做好域名解析</li><li>已做好端口映射，因为是通过SSH服务，端口映射为内网22，外网出于安全选了一个其它端口，因此外网访问时地址为：<code>ssh://domain:proxy/directory/to/githubrepo</code></li></ul><p>建立Git服务器过程主要参考<a href="https://www.liaoxuefeng.com/wiki/896043488029600/899998870925664">廖雪峰教程</a></p><span id="more"></span><h2 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1 安装Git"></a>1 安装Git</h2><p>Ubuntu Server自带了Git，如果没有，请用命令：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> git<br></code></pre></td></tr></table></figure><p>进行安装</p><h2 id="2-创建一个git用户，用来运行git服务"><a href="#2-创建一个git用户，用来运行git服务" class="headerlink" title="2 创建一个git用户，用来运行git服务"></a>2 创建一个git用户，用来运行git服务</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo adduser git</span><br></code></pre></td></tr></table></figure><p>其中<code>git</code>可以换成你喜欢的任何名字</p><p>创建时需要设置用户<code>git</code>密码，随便写一个，后面我们用key来登录，密码基本用不到。<code>git</code>用户主要使用使用git服务，因此出于安全禁止git用户登录shell，编辑<code>/etc/passwd</code>:</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo vim <span class="hljs-regexp">/etc/</span>passwd<br></code></pre></td></tr></table></figure><p>找到<code>git:x:1001:1001:,,,:/home/git:/bin/bash</code>，改为<code>git​:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</code></p><p>这样，<code>git</code>用户就不可以登录shell，但是可以使用ssh访问git服务</p><h2 id="3-创建数字证书，用于登录"><a href="#3-创建数字证书，用于登录" class="headerlink" title="3 创建数字证书，用于登录"></a>3 创建数字证书，用于登录</h2><p>在本地电脑（我的是windows）的git bash下：</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;your_email&quot;</span><br></code></pre></td></tr></table></figure><p>生成证书，因为本地电脑上有多个git仓库，生成证书时指定名称。</p><p>把name.pub里面的公钥导入到服务器上<code>/home/git/.ssh/authorized_keys</code>中，<code>.ssh</code>文件夹和其下的<code>authorized_keys</code>文件需要手动创建。公钥一行一个。</p><h2 id="4-建立Git仓库并初始化"><a href="#4-建立Git仓库并初始化" class="headerlink" title="4 建立Git仓库并初始化"></a>4 建立Git仓库并初始化</h2><p>选定一个目录作为Git仓库，假定为<code>/home/gitrepos/test</code>，在<code>/home/gitrepos</code>下输入命令：</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">sudo git init <span class="hljs-comment">--bare test.git</span><br></code></pre></td></tr></table></figure><p><code>Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以.git结尾。</code></p><p>这里是引用教程的说法，老实说一开始我很懵逼。我以为Git服务器就是像Github一样，<code>git push</code>后会把版本信息和文件都同步到服务器上。后来查了许多资料才搞明白，加上<code>--bare</code>参数生成的裸仓库的意思，大概就是只做版本控制，不上传文件。工作区就是指我们的文件和文件夹，要同步工作区，后面细说。</p><p>建立Git仓库后，将仓库所有者改为用户<code>git</code>：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo chown -R git:git <span class="hljs-regexp">/home/gi</span>trepos/test.git<br></code></pre></td></tr></table></figure><h2 id="5-克隆服务器上的仓库到本地"><a href="#5-克隆服务器上的仓库到本地" class="headerlink" title="5 克隆服务器上的仓库到本地"></a>5 克隆服务器上的仓库到本地</h2><p>在本地电脑上用命令：</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>@serveraddress/home/gitrepos/test.git<br></code></pre></td></tr></table></figure><p>这里的<code>serveraddress</code>，如果只是在局域网内使用，可以直接用服务器的IP地址。但前文讲过，我们需要进行外网访问，并且我的外网访问端口不是22，那么这个命令可以写成：</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir">git clone git<span class="hljs-variable">@ssh</span><span class="hljs-symbol">://domian</span><span class="hljs-symbol">:proxy/home/gitrepos/test</span>.git<br></code></pre></td></tr></table></figure><p>这样就可以通过外网来clone仓库。</p><p>我用了另外一种方式，即在windows的<code>c:/用户/username/.ssh</code>下用<code>config</code>文件来配置<code>serveraddress</code>，因为我把证书全部放到这个文件夹下面了，有多个git仓库时，用<code>config</code>文件配置比较方便。<code>config</code>文件中配置这个git仓库的代码为：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> 自建的git Server，域名访问<br>Host **Domain**<br>HostName <span class="hljs-regexp">//</span>**DomainName**<br>port <span class="hljs-regexp">//</span>自己定义的端口，例如<span class="hljs-number">1234</span><br>User git <span class="hljs-regexp">//</span>服务器上的git用户名<br>IdentityFile ~<span class="hljs-regexp">/.ssh/</span>生成的证书名字<br></code></pre></td></tr></table></figure><p>这样通过第一条命令也可以正常clone下来git仓库。</p><h2 id="6-同步工作区到服务器上"><a href="#6-同步工作区到服务器上" class="headerlink" title="6 同步工作区到服务器上"></a>6 同步工作区到服务器上</h2><p>我一直很纳闷我在本地Git文件夹中的文件在服务器上怎么找到，毕竟对于我一个菜鸟选手，看到文件才比较放心。查阅资料后，总结的方法如下：</p><ul><li><p>在服务器上把git仓库clone一份：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone <span class="hljs-regexp">/home/gi</span>trepos<span class="hljs-regexp">/test.git /</span>home/workspace<br></code></pre></td></tr></table></figure><p>克隆后，在<code>/home/workspace</code>目录下会有一个<code>test</code>文件夹，跟本地克隆一样，文件夹里就会有工作区（文件和目录了）。</p></li><li><p>实现每次本地push后，服务上自动把工作区同步到/home/workspace/test中：</p><p>首先要把<code>home/workspace/test</code>目录的所有者给用户<code>git</code>：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo chown -R git:git <span class="hljs-regexp">/home/</span>workspace/test<br></code></pre></td></tr></table></figure><p>然后在git仓库中（/home/gitrepos/test.git），建立一个钩子：</p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">cd</span> /home/gitrepos/<span class="hljs-keyword">test</span>.git/hooks<br>sudo touch <span class="hljs-keyword">post</span>-receive<br>chmod -R 777 <span class="hljs-keyword">post</span>-receive<br>sudo vim <span class="hljs-keyword">post</span>-receive<br></code></pre></td></tr></table></figure><p>在<code>post-receive</code>中输入以下内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-built_in">export</span> LANG=zh_CN.UTF-8<br><span class="hljs-built_in">cd</span> /home/workspace/<span class="hljs-built_in">test</span>  //这个是你每次要同步的文件夹<br><span class="hljs-built_in">unset</span> GIT_DIR  //git执行自动脚本的时候有执行一些自定义变量,所以我们在这里<span class="hljs-built_in">unset</span>一下<br>git pull<br></code></pre></td></tr></table></figure><p><strong>注意</strong>，这里因为生成和编辑<code>post-receive</code>时用的是<code>sudo</code>命令，<code>post-receive</code>所有者是<code>root</code>用户，要改成<code>git</code>用户才能生效。我在这里琢磨了半天才搞明白，改之前一直不能同步。</p></li><li><p>做完上面操作后，在本地添加文件，<code>git push</code>后，在<code>/home/workspace/test</code>目录中就能看到自己添加的文件了。</p></li></ul><h2 id="7-完结"><a href="#7-完结" class="headerlink" title="7 完结"></a>7 完结</h2><p>通过以上步骤后，能够实现外网访问局域网内的git服务器，并同步工作区到服务器上。整体其实很简单，但因为自己对Git的原理了解不多，很多都是照着网上的教程照虎画猫，因为无法解释为什么要这么干。Git是一个很有意思的工具，我认为廖雪峰的教程是入门最佳选择，想深入了解的话也可以看看<a href="https://git-scm.com/book">这个教程</a>。</p><p>当然，想要让Git服务器更强大，还有很多工作要做，比如添加证书管理功能（很多用户的时候很使用）、权限管理等等，这些跟我这个个人用户关系不大，加上才疏学浅，也不想再进一步折腾。到这个程度，已经可以让自己很好的使用了。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SublimeText3配置Markdown</title>
+    <link href="/2020/sublimetext3markdwon/"/>
+    <url>/2020/sublimetext3markdwon/</url>
+    
+    <content type="html"><![CDATA[<p>参考一篇有价值的<a href="https://blog.csdn.net/qq_20011607/article/details/81370236">安装说明</a>，记录如下：</p><h3 id="0-安装Package-Control"><a href="#0-安装Package-Control" class="headerlink" title="0.安装Package Control"></a>0.安装Package Control</h3><p>略</p><span id="more"></span><h3 id="1-安装Markdown插件"><a href="#1-安装Markdown插件" class="headerlink" title="1.安装Markdown插件"></a>1.安装Markdown插件</h3><h4 id="1-1-安装MarkdownEditing"><a href="#1-1-安装MarkdownEditing" class="headerlink" title="1.1 安装MarkdownEditing"></a>1.1 安装MarkdownEditing</h4><p><code>Ctrl+Shift+P</code>，输入<code>Install Package</code>，输入<code>MarkdownEditing</code>，安装。<br>安装后，我这里报错：</p><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">Error </span>loading syntax file &quot;Packages/Markdown/Markdown.sublime-syntax&quot;: Unable to read Packages/Markdown/Markdown.sublime-syntax<br></code></pre></td></tr></table></figure><p>网上搜的办法：<br>打开<code>Preferences.sublime-settings</code>：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;ignored_packages&quot;</span>:[<br>        <span class="hljs-string">&quot;Markdown&quot;</span><br>    ]<br>&#125;<br></code></pre></td></tr></table></figure><p>把”Markdown”删除即可。</p><h4 id="1-2-安装MarkdownPreview"><a href="#1-2-安装MarkdownPreview" class="headerlink" title="1.2 安装MarkdownPreview"></a>1.2 安装MarkdownPreview</h4><p>安装方式如上。安装后，配置快捷键，在<code>配置-快捷键</code>打开的文件的右侧栏的中括号中添加一行代码：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123; <span class="hljs-attr">&quot;keys&quot;</span>: [<span class="hljs-string">&quot;alt+m&quot;</span>], <span class="hljs-attr">&quot;command&quot;</span>: <span class="hljs-string">&quot;markdown_preview&quot;</span>, <span class="hljs-attr">&quot;args&quot;</span>: &#123;<span class="hljs-attr">&quot;target&quot;</span>: <span class="hljs-string">&quot;browser&quot;</span>, <span class="hljs-attr">&quot;parser&quot;</span>:<span class="hljs-string">&quot;markdown&quot;</span>&#125;  &#125;<br></code></pre></td></tr></table></figure><p>其中，alt+m可以自己定义，parser后面的markdown可以写github，则调用github的渲染方式，需考虑连接github的速度，并且据说一天只能调用60次。我没配置，也没验证。</p><h4 id="1-3-安装配置LiveReload"><a href="#1-3-安装配置LiveReload" class="headerlink" title="1.3 安装配置LiveReload"></a>1.3 安装配置LiveReload</h4><p>首先，如前Markdown Preview安装成功后，设置前文所述的快捷键（如需），打开其配置文件 <code>Preferences -&gt; Package Settings -&gt; Markdown Preview -&gt; Settings</code>，检查左侧<code>enable_autoreload</code>条目是否为true，若是，跳过。若不是，右侧栏加一条下面这个后重启Sublime:</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;enable_autoreload&quot;</span>: <span class="hljs-literal">true</span><br>&#125;<br></code></pre></td></tr></table></figure><p>然后安装LiveReload。<br>安装成功后，再次在Package Control中安装<code>LiveReload: Enable/disable plug-ins</code>,并选择<code>Simple Reload with delay (400ms)</code>或者<code>Simple Reload with delay</code>，两者区别在于前者有400ms延迟。</p><p><strong>全部安装配置成功后，编辑md文件，保存，alt+m在浏览器中打开。继续编辑md文件，保存，浏览器中会自动刷新。</strong></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>markdown</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>在一台电脑上配置多个Github账号并分别同步不同项目</title>
+    <link href="/2020/MultiAccoutOfGithubOnOneComputer/"/>
+    <url>/2020/MultiAccoutOfGithubOnOneComputer/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>果然是折腾无止境。我原本是在github上用hexo建了一个博客，建设过程不复杂，网上很多详细教程。然后问题在于：</p><ul><li>1、我新建了一个Github账号（新账号）来部署这个博客；</li><li>2、我是在工作电脑上安装的虚拟机上部署的Lubuntu然后搭建的hexo环境并上传到github；</li><li>3、我想换家里的PC来写博客，而且家里的PC之前配置过另一个Git账号（旧账号）。</li></ul><span id="more"></span><p>我蛋疼的一比！<br>所以现在我需要解决的问题有：</p><ol><li>怎么把写博客的环境迁移到家里的PC上？</li><li>家里的PC已经配置过旧Github账号，如果添加新账号？</li></ol><h2 id="Q1：怎么迁移博客环境？"><a href="#Q1：怎么迁移博客环境？" class="headerlink" title="Q1：怎么迁移博客环境？"></a>Q1：怎么迁移博客环境？</h2><p>这个问题网上也有详细教程，后面再说</p><h2 id="Q2：一台电脑多个Github账号的配置"><a href="#Q2：一台电脑多个Github账号的配置" class="headerlink" title="Q2：一台电脑多个Github账号的配置"></a>Q2：一台电脑多个Github账号的配置</h2><h3 id="0-关于账号的问题"><a href="#0-关于账号的问题" class="headerlink" title="0. 关于账号的问题"></a>0. 关于账号的问题</h3><p>网上有的教程是说要删除电脑上之前配置的Global Username，但我测试下来可以对单独的项目指定单独的Username，指定后该项目会优先使用项目指定的Username。关于怎么指定项目的Username，可参考另一篇博文。</p><h3 id="1-首先创建不同的SSH-Key"><a href="#1-首先创建不同的SSH-Key" class="headerlink" title="1. 首先创建不同的SSH Key"></a>1. 首先创建不同的SSH Key</h3><p>创建ssh key的命令为：</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;your email&quot;</span><br></code></pre></td></tr></table></figure><p>在旧账号上创建的时候，输入命令一路回车，就会创建<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，其中<code>.pub</code>结尾的文件是公钥，打开可以看到文件中的内容，就是要填写在Github上的。Windows下密钥会默认创建在<code>C:\User\用户名\.ssh</code>文件夹中。<br>创建新的ssh key，使用以上命令后，不能一路回车，在出现<code>Enter file in which to save the key (~/.ssh/id_rsa):</code>时需要输入文件名和保存位置，如果不输入保存位置则会在当前目录下生成，生成后把文件移至<code>C:\User\用户名\.ssh</code>即可。我以生成<code>sineks</code>文件名为例。</p><h3 id="2-识别新的密钥"><a href="#2-识别新的密钥" class="headerlink" title="2. 识别新的密钥"></a>2. 识别新的密钥</h3><p>生成密钥后，需要执行<code>ssh-agent</code>让<code>ssh</code>识别新的密钥：</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>ssh-agent bash<br><span class="hljs-variable">$ </span>ssh-add ~<span class="hljs-regexp">/.ssh/sineks</span><br></code></pre></td></tr></table></figure><p><em>如果直接执行上面第二条命令，我这里提示<code>Could not open a connection to your authentication agent </code>，所以需要先输入第一条命令。</em></p><p><strong>这里需要注意的是，我在操作过程中，生成新的ssh key后并执行<code>ssh-agent</code>后，旧的ssh key似乎被新key替换掉了，所以需要把旧的ssh key也用<code>ssh-agent</code>执行一次，这样两个key就都能识别了。</strong></p><h3 id="3-配置-ssh-config文件"><a href="#3-配置-ssh-config文件" class="headerlink" title="3. 配置/.ssh/config文件"></a>3. 配置/.ssh/config文件</h3><p>我的Windows下.ssh文件夹是没有config文件的，新建一个，并在其中输入：</p><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs less"># 该文件用于配置私钥对应的服务器<br><br># <span class="hljs-selector-tag">Default</span> <span class="hljs-selector-tag">github</span> <span class="hljs-selector-tag">user</span>(kakabryan<span class="hljs-variable">@gmail</span>.com)<br><span class="hljs-selector-tag">Host</span> <span class="hljs-selector-tag">github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">HostName</span> <span class="hljs-selector-tag">github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">User</span> <span class="hljs-selector-tag">ranba</span><br><span class="hljs-selector-tag">IdentityFile</span> ~/<span class="hljs-selector-class">.ssh</span>/<span class="hljs-selector-tag">id_rsa</span><br><br># <span class="hljs-selector-tag">another</span> <span class="hljs-selector-tag">github</span> <span class="hljs-selector-tag">user</span>(greatubuntu<span class="hljs-variable">@gmail</span>.com)<br><span class="hljs-selector-tag">Host</span> <span class="hljs-selector-tag">sineks</span><span class="hljs-selector-class">.github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">HostName</span> <span class="hljs-selector-tag">github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">User</span> <span class="hljs-selector-tag">sineks</span><br><span class="hljs-selector-tag">IdentityFile</span> ~/<span class="hljs-selector-class">.ssh</span>/<span class="hljs-selector-tag">sineks</span><br></code></pre></td></tr></table></figure><p>上面两段语句说明了对不同的账号，设置不同的Host、User、IdentityFile(ssh key)。下面这段是我的新账号的设置，这里的Host我们定义了一个<code>sineks.github.com</code>，看网上的教程也可以定义成其它的，应该只是告诉git这里的名字不一样。具体后面再说。</p><h3 id="4-测试是否成功"><a href="#4-测试是否成功" class="headerlink" title="4. 测试是否成功"></a>4. 测试是否成功</h3><p>输入：</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>ssh -T git<span class="hljs-variable">@github</span>.com<br><span class="hljs-variable">$ </span>ssh -T git<span class="hljs-variable">@sineks</span>.github.com<br></code></pre></td></tr></table></figure><p>来分别测试两个账号是否连接成功。如果成功，两个账号应分别显示各自的User Name：</p><p><img src="/images/Snipaste_2020-02-18_15-52-36.png"></p><p><img src="/images/Snipaste_2020-02-18_15-55-49.png"></p><h3 id="5-最后配置git上传"><a href="#5-最后配置git上传" class="headerlink" title="5. 最后配置git上传"></a>5. 最后配置git上传</h3><p>我在本地有一个仓库（假定已有<code>.git</code>文件夹需要上传到github新账号上，首先需要在这个仓库里git bash，然后输入以下命令：</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git remote rm origin<br><span class="hljs-variable">$ </span>git remote add origin git<span class="hljs-variable">@sineks</span>.<span class="hljs-symbol">github.com:</span>sineks/xxx.git<br></code></pre></td></tr></table></figure><p>正如之前我们定义/.ssh/config文件时提到的Host，这两条命令的作用应该是修改本仓库上传时使用的Host信息，如果不修改的话，我这里会发生仍然上传到旧账号上面去的情况，并提示没有在旧账号上找到对应的仓库。</p><p>我们也可以修改.git文件夹下的cofnig文件：</p><p><img src="/images/Snipaste_2020-02-18_16-03-49.png"></p><p>作用应该是一样的。我是通过修改config文件实现的。</p><p>修改完成后git add、git commit、git push就顺利完成了。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>github</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NextCloud升级后一直处于维护的解决办法</title>
+    <link href="/2020/nextcloudupdate/"/>
+    <url>/2020/nextcloudupdate/</url>
+    
+    <content type="html"><![CDATA[<p>近期登陆nextcloud，提示可以升级到18.0.2（当前时18.0.0），于是点击升级。经历了漫长的等待后（没有梯子的情况下下载nextcloud包非常慢，我记得好像也就100多MB的东西，能下几个小时）直到出现Done，再打nextcloud网站却一直提示处于维护状态，网上搜索，解决办法如下：</p><p>在nextcloud目录下（我的是/var/www/nextcloud)，输入：<code>sudo -u www-data php occ maintenance:mode --off</code></p><p>或者可以直接修改nextcloud的<code>config/config.php</code>文件，找到<code>maintenance =&gt; true</code>，改为<code>maintenance =&gt; false</code>，保存重新访问即可。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>nextcloud</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hexo常用命令</title>
+    <link href="/2020/hexoblogcommand/"/>
+    <url>/2020/hexoblogcommand/</url>
+    
+    <content type="html"><![CDATA[<p>折腾了几天在Github上部署了Hexo博客，后面就不弄了，我真是懒得可以。今天想起记录点东西，发掘连Hexo的基本操作都忘记了，还是得提醒自己记得一下。</p><p>经常使用的就是发布博客的命令：</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs haxe">hexo <span class="hljs-keyword">new</span> <span class="hljs-type">post</span> <span class="hljs-string">&quot;title&quot;</span>  <span class="hljs-meta"># 发布新文章</span><br>hexo g <span class="hljs-meta">#生成静态页面</span><br>hexo s <span class="hljs-meta">#启用本地服务器，可以预览，地址为localhost:4000</span><br>hexo d <span class="hljs-meta">#发布到github</span><br></code></pre></td></tr></table></figure><p>关于hexo的基本命令，没有什么比<a href="https://hexo.io/zh-cn/docs/index.html">官网文档</a>更好的指南了，命令全在<a href="https://hexo.io/zh-cn/docs/commands">这里</a>了，需要进一步研究的话就多看看。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>搭建Hexo+Github博客全记录</title>
+    <link href="/2020/RecordofCreatBlogWithHexo/"/>
+    <url>/2020/RecordofCreatBlogWithHexo/</url>
+    
+    <content type="html"><![CDATA[<p>准备挖个大坑，记录一下自己创建配置Hexo+Github博客的全过程，以我的惰性，估计要写很久。先列个提纲：<br>    1. 搭建博客/域名绑定<br>    2. 配置博客主题<br>    3. 多终端写博客<br>    4. 用Sublime舒服的写博客<br>说真的，多看官网文档非常有帮助。所以如果这个大坑填补上，我觉得以后就是多看官方文档。<strong>另外善用Google</strong>。</p><span id="more"></span>]]></content>
+    
+    
+    <categories>
+      
+      <category>github</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>github</tag>
+      
+      <tag>hexo</tag>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>第一篇文章发布</title>
+    <link href="/2020/firstpost/"/>
+    <url>/2020/firstpost/</url>
+    
+    <content type="html"><![CDATA[<p>这篇“第一篇”文章来的相当晚，距离我建立这个Github的博客已经2个月了。</p><p>一直都在折腾各种东西，有的想起来就在这里记录一下，有的折腾累了不想写了就过了。所以这其实没几篇文章。不过对比最近折腾的Wordpress，还是感觉Hexo简练，虽然部署上可能稍有一点门槛，但正适合我这种不折腾不舒服斯基人。</p><p>还是希望自己能够坚持的写一写东西。Hexo博客也是一个不错的练习MD的好方法。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>

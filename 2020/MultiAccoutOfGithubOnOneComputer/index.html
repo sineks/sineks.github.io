@@ -1,25 +1,26 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="前言果然是折腾无止境。我原本是在github上用hexo建了一个博客，建设过程不复杂，网上很多详细教程。然后问题在于：
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
+1、我新建了一个Github账号（新账号）来部署这个博客；
+2、我是在工作电脑上安装的虚拟机上部署的Lubuntu然后搭建的hexo环境并上传到github；
+3、我想换家里的PC来写博客，而且家里的PC之前配置过另一个Git账号（旧账号）。
+">
+  <meta name="author" content="iubuntu">
+  <meta name="keywords" content="">
   <meta name="description" content="前言果然是折腾无止境。我原本是在github上用hexo建了一个博客，建设过程不复杂，网上很多详细教程。然后问题在于：  1、我新建了一个Github账号（新账号）来部署这个博客； 2、我是在工作电脑上安装的虚拟机上部署的Lubuntu然后搭建的hexo环境并上传到github； 3、我想换家里的PC来写博客，而且家里的PC之前配置过另一个Git账号（旧账号）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在一台电脑上配置多个Github账号并分别同步不同项目">
@@ -34,170 +35,218 @@
 <meta property="article:modified_time" content="2020-03-22T15:56:44.000Z">
 <meta property="article:author" content="iubuntu">
 <meta property="article:tag" content="github">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://yoursite.com/images/Snipaste_2020-02-18_15-52-36.png">
-
-<link rel="canonical" href="http://yoursite.com/2020/MultiAccoutOfGithubOnOneComputer/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
-
-  <title>在一台电脑上配置多个Github账号并分别同步不同项目 | DEEP OCEAN</title>
   
+  <title>在一台电脑上配置多个Github账号并分别同步不同项目 - DEEP OCEAN</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">DEEP OCEAN</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-right"></div>
-</div>
-
-
-<nav class="site-nav">
   
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
+    
       
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
   
+
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/MultiAccoutOfGithubOnOneComputer/">
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="iubuntu">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DEEP OCEAN">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          在一台电脑上配置多个Github账号并分别同步不同项目
-        </h1>
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
-              <time title="创建时间：2020-03-22 23:56:44" itemprop="dateCreated datePublished" datetime="2020-03-22T23:56:44+08:00">2020-03-22</time>
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>DeepOcean</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="在一台电脑上配置多个Github账号并分别同步不同项目">
+              
             </span>
 
-          
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-22 23:56" pubdate>
+        2020年3月22日 晚上
+      </time>
+    </span>
+  
+</div>
 
-        </div>
-      </header>
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>果然是折腾无止境。我原本是在github上用hexo建了一个博客，建设过程不复杂，网上很多详细教程。然后问题在于：</p>
+      
+      6 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">在一台电脑上配置多个Github账号并分别同步不同项目</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>果然是折腾无止境。我原本是在github上用hexo建了一个博客，建设过程不复杂，网上很多详细教程。然后问题在于：</p>
 <ul>
 <li>1、我新建了一个Github账号（新账号）来部署这个博客；</li>
 <li>2、我是在工作电脑上安装的虚拟机上部署的Lubuntu然后搭建的hexo环境并上传到github；</li>
@@ -213,206 +262,173 @@
 <h2 id="Q1：怎么迁移博客环境？"><a href="#Q1：怎么迁移博客环境？" class="headerlink" title="Q1：怎么迁移博客环境？"></a>Q1：怎么迁移博客环境？</h2><p>这个问题网上也有详细教程，后面再说</p>
 <h2 id="Q2：一台电脑多个Github账号的配置"><a href="#Q2：一台电脑多个Github账号的配置" class="headerlink" title="Q2：一台电脑多个Github账号的配置"></a>Q2：一台电脑多个Github账号的配置</h2><h3 id="0-关于账号的问题"><a href="#0-关于账号的问题" class="headerlink" title="0. 关于账号的问题"></a>0. 关于账号的问题</h3><p>网上有的教程是说要删除电脑上之前配置的Global Username，但我测试下来可以对单独的项目指定单独的Username，指定后该项目会优先使用项目指定的Username。关于怎么指定项目的Username，可参考另一篇博文。</p>
 <h3 id="1-首先创建不同的SSH-Key"><a href="#1-首先创建不同的SSH-Key" class="headerlink" title="1. 首先创建不同的SSH Key"></a>1. 首先创建不同的SSH Key</h3><p>创建ssh key的命令为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your email&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;your email&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>在旧账号上创建的时候，输入命令一路回车，就会创建<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，其中<code>.pub</code>结尾的文件是公钥，打开可以看到文件中的内容，就是要填写在Github上的。Windows下密钥会默认创建在<code>C:\User\用户名\.ssh</code>文件夹中。<br>创建新的ssh key，使用以上命令后，不能一路回车，在出现<code>Enter file in which to save the key (~/.ssh/id_rsa):</code>时需要输入文件名和保存位置，如果不输入保存位置则会在当前目录下生成，生成后把文件移至<code>C:\User\用户名\.ssh</code>即可。我以生成<code>sineks</code>文件名为例。</p>
 <h3 id="2-识别新的密钥"><a href="#2-识别新的密钥" class="headerlink" title="2. 识别新的密钥"></a>2. 识别新的密钥</h3><p>生成密钥后，需要执行<code>ssh-agent</code>让<code>ssh</code>识别新的密钥：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br><span class="line">$ ssh-add ~/.ssh/sineks</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>ssh-agent bash<br><span class="hljs-variable">$ </span>ssh-add ~<span class="hljs-regexp">/.ssh/sineks</span><br></code></pre></td></tr></table></figure>
 <p><em>如果直接执行上面第二条命令，我这里提示<code>Could not open a connection to your authentication agent </code>，所以需要先输入第一条命令。</em></p>
 <p><strong>这里需要注意的是，我在操作过程中，生成新的ssh key后并执行<code>ssh-agent</code>后，旧的ssh key似乎被新key替换掉了，所以需要把旧的ssh key也用<code>ssh-agent</code>执行一次，这样两个key就都能识别了。</strong></p>
 <h3 id="3-配置-ssh-config文件"><a href="#3-配置-ssh-config文件" class="headerlink" title="3. 配置/.ssh/config文件"></a>3. 配置/.ssh/config文件</h3><p>我的Windows下.ssh文件夹是没有config文件的，新建一个，并在其中输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 该文件用于配置私钥对应的服务器</span><br><span class="line"></span><br><span class="line"># Default github user(kakabryan@gmail.com)</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">User ranba</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"># another github user(greatubuntu@gmail.com)</span><br><span class="line">Host sineks.github.com</span><br><span class="line">HostName github.com</span><br><span class="line">User sineks</span><br><span class="line">IdentityFile ~/.ssh/sineks</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs less"># 该文件用于配置私钥对应的服务器<br><br># <span class="hljs-selector-tag">Default</span> <span class="hljs-selector-tag">github</span> <span class="hljs-selector-tag">user</span>(kakabryan<span class="hljs-variable">@gmail</span>.com)<br><span class="hljs-selector-tag">Host</span> <span class="hljs-selector-tag">github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">HostName</span> <span class="hljs-selector-tag">github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">User</span> <span class="hljs-selector-tag">ranba</span><br><span class="hljs-selector-tag">IdentityFile</span> ~/<span class="hljs-selector-class">.ssh</span>/<span class="hljs-selector-tag">id_rsa</span><br><br># <span class="hljs-selector-tag">another</span> <span class="hljs-selector-tag">github</span> <span class="hljs-selector-tag">user</span>(greatubuntu<span class="hljs-variable">@gmail</span>.com)<br><span class="hljs-selector-tag">Host</span> <span class="hljs-selector-tag">sineks</span><span class="hljs-selector-class">.github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">HostName</span> <span class="hljs-selector-tag">github</span><span class="hljs-selector-class">.com</span><br><span class="hljs-selector-tag">User</span> <span class="hljs-selector-tag">sineks</span><br><span class="hljs-selector-tag">IdentityFile</span> ~/<span class="hljs-selector-class">.ssh</span>/<span class="hljs-selector-tag">sineks</span><br></code></pre></td></tr></table></figure>
 
 <p>上面两段语句说明了对不同的账号，设置不同的Host、User、IdentityFile(ssh key)。下面这段是我的新账号的设置，这里的Host我们定义了一个<code>sineks.github.com</code>，看网上的教程也可以定义成其它的，应该只是告诉git这里的名字不一样。具体后面再说。</p>
 <h3 id="4-测试是否成功"><a href="#4-测试是否成功" class="headerlink" title="4. 测试是否成功"></a>4. 测试是否成功</h3><p>输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">$ ssh -T git@sineks.github.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>ssh -T git<span class="hljs-variable">@github</span>.com<br><span class="hljs-variable">$ </span>ssh -T git<span class="hljs-variable">@sineks</span>.github.com<br></code></pre></td></tr></table></figure>
 <p>来分别测试两个账号是否连接成功。如果成功，两个账号应分别显示各自的User Name：</p>
-<p><img src="/images/Snipaste_2020-02-18_15-52-36.png"></p>
-<p><img src="/images/Snipaste_2020-02-18_15-55-49.png"></p>
+<p><img src="/images/Snipaste_2020-02-18_15-52-36.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/Snipaste_2020-02-18_15-55-49.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="5-最后配置git上传"><a href="#5-最后配置git上传" class="headerlink" title="5. 最后配置git上传"></a>5. 最后配置git上传</h3><p>我在本地有一个仓库（假定已有<code>.git</code>文件夹需要上传到github新账号上，首先需要在这个仓库里git bash，然后输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm origin</span><br><span class="line">$ git remote add origin git@sineks.github.com:sineks/xxx.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git remote rm origin<br><span class="hljs-variable">$ </span>git remote add origin git<span class="hljs-variable">@sineks</span>.<span class="hljs-symbol">github.com:</span>sineks/xxx.git<br></code></pre></td></tr></table></figure>
 <p>正如之前我们定义/.ssh/config文件时提到的Host，这两条命令的作用应该是修改本仓库上传时使用的Host信息，如果不修改的话，我这里会发生仍然上传到旧账号上面去的情况，并提示没有在旧账号上找到对应的仓库。</p>
 <p>我们也可以修改.git文件夹下的cofnig文件：</p>
-<p><img src="/images/Snipaste_2020-02-18_16-03-49.png"></p>
+<p><img src="/images/Snipaste_2020-02-18_16-03-49.png" srcset="/img/loading.gif" lazyload></p>
 <p>作用应该是一样的。我是通过修改config文件实现的。</p>
 <p>修改完成后git add、git commit、git push就顺利完成了。</p>
 
-    </div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/github/">github</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/sublimetext3markdwon/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SublimeText3配置Markdown</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/nextcloudupdate/">
+                        <span class="hidden-mobile">NextCloud升级后一直处于维护的解决办法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/github/" rel="tag"># github</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/nextcloudupdate/" rel="prev" title="NextCloud升级后一直处于维护的解决办法">
-      <i class="fa fa-chevron-left"></i> NextCloud升级后一直处于维护的解决办法
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/sublimetext3markdwon/" rel="next" title="SublimeText3配置Markdown">
-      SublimeText3配置Markdown <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="gitalk-container"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+            
+          </article>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q1%EF%BC%9A%E6%80%8E%E4%B9%88%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2%E7%8E%AF%E5%A2%83%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">Q1：怎么迁移博客环境？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q2%EF%BC%9A%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E5%A4%9A%E4%B8%AAGithub%E8%B4%A6%E5%8F%B7%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Q2：一台电脑多个Github账号的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-%E5%85%B3%E4%BA%8E%E8%B4%A6%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">0. 关于账号的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84SSH-Key"><span class="nav-number">3.2.</span> <span class="nav-text">1. 首先创建不同的SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%86%E5%88%AB%E6%96%B0%E7%9A%84%E5%AF%86%E9%92%A5"><span class="nav-number">3.3.</span> <span class="nav-text">2. 识别新的密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE-ssh-config%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">3. 配置&#x2F;.ssh&#x2F;config文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="nav-number">3.5.</span> <span class="nav-text">4. 测试是否成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9C%80%E5%90%8E%E9%85%8D%E7%BD%AEgit%E4%B8%8A%E4%BC%A0"><span class="nav-number">3.6.</span> <span class="nav-text">5. 最后配置git上传</span></a></li></ol></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">iubuntu</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">9</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">iubuntu</span>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.4.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
-  </div>
-
-        
-
-
-
-
-
-
-
 
       </div>
-    </footer>
+    
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
+  
+</footer>
 
 
-<script src="/js/schemes/muse.js"></script>
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-<script src="/js/next-boot.js"></script>
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
@@ -420,40 +436,52 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
   
 
-  
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
 
-<script>
-NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID    : '1bb21839ba808a52582a',
-      clientSecret: 'cdfb314dbafc7cec476ddbf36d7267491844e6c6',
-      repo        : 'sineks.github.io',
-      owner       : 'sineks',
-      admin       : ['sineks'],
-      id          : '4734683da4054017057a78dc6d550cdb',
-        language: '',
-      distractionFreeMode: true
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-});
-</script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
 </body>
 </html>
