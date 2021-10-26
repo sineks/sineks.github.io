@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title></title>
+    <title>testgithubaction</title>
     <link href="/2021/testgithubaction/"/>
     <url>/2021/testgithubaction/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>测试一下github action有没有生效。</p>]]></content>
     
     
     
