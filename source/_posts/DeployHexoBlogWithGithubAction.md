@@ -25,11 +25,11 @@ ssh-keygen -f hexo-deploy-key -C "sineks.github.io"
 在`git bash`中运行该命令，会在当前文件夹下生成`hexo-deploy-key`和`hexo-deploy-key.pub`一对密钥。`-f`参数是指定生成密钥的名字`hexo-deploy-key`
 
 然后将生成的密钥文件部署到仓库中，首先是部署公钥：
-![](../images/hexoblog_2021-10-26_18-32-38.png)
+![](https://cdn.jsdelivr.net/gh/sineks/sineks.github.io@hexoimgs/img/202110262136329.png)
 如图所示，点击`Add Deploy Key`，将`hexo-deploy-key.pub`中的内容复制进去，并命名为`hexo-deploy-key`
 
 部署私钥：
-![](../images/hexoblog_2021-10-26_19-46-09.png)
+![](https://cdn.jsdelivr.net/gh/sineks/sineks.github.io@hexoimgs/img/202110262135035.png)
 如上图所示，点击`New repository secret`，将`hexo-deploy-key`中的内容粘贴进去，命名为`DEPLOY_SECRET`(注意，后面workflow中的名字要跟这里的名字一样)
 
 ## 编写Workflow
@@ -100,7 +100,7 @@ jobs:
 通过以上步骤配置好Github的Actions后，只要分支`hexosource`中的文件发生变化，Actions就会自动运行，很快就能在博客地址上看到结果。
 为了方便使用，我在本地使用`Atom`来书写文章和发布到Github仓库，这个软件是Github出品，对Github的集成做的很好。
 我的Atom界面：
-![](../images/Snipaste_2021-10-26_20-05-10.png)
+![](https://raw.githubusercontent.com/sineks/sineks.github.io/hexoimgs/img/202110262128009.png)
 各部分说明：
   - A：Project，将hexo源目录添加到这里，方便进行文件树方式的管理；
   - B：编辑区
