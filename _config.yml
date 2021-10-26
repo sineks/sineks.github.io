@@ -58,5 +58,5 @@ ignore: null
 theme: fluid
 deploy:
   - type: git
-    repository: git@sineks.github.com:sineks/sineks.github.io.git
+    repository: git@github.com:sineks/sineks.github.io.git
     branch: master
