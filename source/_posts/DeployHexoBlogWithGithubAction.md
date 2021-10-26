@@ -1,7 +1,10 @@
 ---
 title: 通过Github Actions自动部署Hexo博客
 date: 2021-10-26 16:56:50
-tags: hexo github githubactions
+tags:
+  - hexo
+  - github
+  - githubactions
 ---
 把Hexo托管到Github，通过Github Actions自动部署博客，算是使用Hexo的一种比较方便的方案，用户只需要在本地用趁手的Markdown书写工具，写好文章并推送至Github仓库即可。
 
@@ -102,5 +105,5 @@ jobs:
   - A：Project，将hexo源目录添加到这里，方便进行文件树方式的管理；
   - B：编辑区
   - C：预览区，这里安装了插件`Markdown Preview Enhanced`
-  - D：Git和Github区，在Git标签下可以看到当前git仓库的变更情况，在这里可以进行`git add`和`git commit`操作，然后在右下角状态栏里`Fecth`字样处，如果有需要Push的操作时，这里会变成`Push`。
+  - D：Git区，在Git标签下可以看到当前git仓库的变更情况，在这里可以进行`git add`和`git commit`操作，然后在右下角状态栏里`Fecth`字样处，如果有需要Push的操作时，这里会变成`Push`。
   - E：命令行，这里安装了插件`platformio-ide-termianl`，我在这里主要是进行`hexo new post`操作，这样生成的markdown文件会包含hexo博客所需的源信息。
