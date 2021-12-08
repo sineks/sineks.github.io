@@ -55,3 +55,16 @@ jobs:
       - name: Deploy hexo
         run: |
           npm run deploy
+
+      - uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: |
+            ${{ secrets.BLOG_DEPLOY_KEY }}
+
+      - name: Scan Public keys
+        run: |
+          ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy To VPS
+        run: |
+        rsync -av --delete public kahexo@${{ secrets.SSH_HOST }}: /home/kahexo/hexoblog

@@ -1903,7 +1903,7 @@
 
 "hexo@^5.4.0":
   "integrity" "sha1-d9V/ocKfOrBZZP5OvZxE4j31Gzc="
-  "resolved" "https://registry.npm.taobao.org/hexo/download/hexo-5.4.0.tgz"
+  "resolved" "https://registry.nlark.com/hexo/download/hexo-5.4.0.tgz"
   "version" "5.4.0"
   dependencies:
     "abbrev" "^1.1.1"
