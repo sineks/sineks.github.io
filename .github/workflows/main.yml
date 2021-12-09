@@ -67,4 +67,4 @@ jobs:
 
       - name: Deploy To VPS
         run: |
-        rsync -av --delete public kahexo@${{secrets.SSH_HOST}}:/home/kahexo/hexoblog
+          rsync -av --delete public/ kahexo@${{secrets.SSH_HOST}}:/home/kahexo/hexoblog
