@@ -4,13 +4,25 @@
   
   
   <entry>
-    <title></title>
+    <title>Gihub Actions自动部署Hexo后推送至VPS</title>
     <link href="/2021/autodeployhexowithgithubaction/"/>
     <url>/2021/autodeployhexowithgithubaction/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前研究过通过<a href="https://blog.muzy.cc/2021/DeployHexoBlogWithGithubAction/">Github Actions自动部署Hexo博客</a>，现在更进一步，将Github Actions生成的博客页面推送到自己的VPS上。</p><p>当我们在本地使用<code>hexo g</code>命令的时候，就是在本地完成了博客的编译工作，即将markdown文件转成html文件并构建好博客的布局、主题等等要素，再使用<code>hexo d</code>命令，就是将本地的静态页面push到Github上。现在使用Github Actions，其实就是将<code>hexo g</code>的过程放在Github服务器上完成了，这样一来，本地就只需要编写好markdown文件并推送到对应的Github仓库即可。</p><p>同时，Github上编译好整个静态网站后，网站文件也可以推送到其它任何服务器上，比如自己的VPS。方法也很简单，使用<code>rsyc</code>工具通过<code>SSH</code>的方式将网站文件推送到VPS即可。</p><h2 id="VPS上的准备工作"><a href="#VPS上的准备工作" class="headerlink" title="VPS上的准备工作"></a>VPS上的准备工作</h2><ul><li>安装rsync。有的服务器上没有默认安装，需要自行安装，我的Debian上使用<code>apt install rsync</code>即可。使用<code>rsync --version</code>命令可以检查有无安装及安装的版本；</li><li>如果VPS上只有<code>root</code>用户，出于安全考虑，可以新建一个用户专门用于接收推送；</li><li>生成一对SSH Key，用于SSH认证。用哪个用户进行SSH，SSH Key就要放在那个用户的home目录里，同时将公钥的内容输入到<code>~./.ssh/authorized_keys</code>中；</li><li>在VPS上指定一个目录用于接收推送过来的网站文件，安装Nginx，并配置好网站；</li></ul><h2 id="Github上的操作"><a href="#Github上的操作" class="headerlink" title="Github上的操作"></a>Github上的操作</h2><p>在仓库的<code>setting</code>-<code>secrets</code>中添加一个key，名称可以是<code>BLOG_DEPLOY_KEY</code>，内容为前述创建的私钥。再建立一个<code>SSH_HOST</code>的key，内容为VPS的IP或域名。</p><p>然后在Github Actions的<code>mian.yml</code>文件中最后添加以下内容：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">webfactory/ssh-agent@v0.4.1</span><br>  <span class="hljs-attr">with:</span><br>    <span class="hljs-attr">ssh-private-key:</span> <span class="hljs-string">|</span><br><span class="hljs-string">      $&#123;&#123; secrets.BLOG_DEPLOY_KEY &#125;&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Scan</span> <span class="hljs-string">Public</span> <span class="hljs-string">keys</span><br>  <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">    ssh-keyscan $&#123;&#123; secrets.SSH_HOST &#125;&#125; &gt;&gt; ~/.ssh/known_hosts</span><br><span class="hljs-string"></span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">To</span> <span class="hljs-string">VPS</span><br>  <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br>    <span class="hljs-string">rsync</span> <span class="hljs-string">-av</span> <span class="hljs-string">--delete</span> <span class="hljs-string">public/</span> <span class="hljs-string">username@$&#123;&#123;secrets.SSH_HOST&#125;&#125;:path/to/html</span><br></code></pre></td></tr></table></figure><p>当仓库有更新时，Github Actions会执行，最终能在VPS上看到自己的静态博客站点文件。<br>如果发生错误，根据错误提示进行纠正即可。</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+      <tag>github</tag>
+      
+      <tag>githubactions</tag>
+      
+      <tag>VPS</tag>
+      
+    </tags>
     
   </entry>
   
