@@ -1,5 +1,5 @@
 ---
-title: Pico-Github-jsDelivr-WebImages
+title: 设置Github图床并在Picgo中配置jsDelivrCDN
 date: 2021-12-09 15:06:44
 tags:
   - github

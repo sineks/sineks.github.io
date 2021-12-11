@@ -498,7 +498,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: https://cdn.jsdelivr.net/gh/sineks/sineks.github.io@hexoimgs/img/202112111644870.jpg
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -792,7 +792,7 @@ cusdis:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
+  banner_img: https://cdn.jsdelivr.net/gh/sineks/sineks.github.io@hexoimgs/img/202112111645956.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -804,7 +804,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/default.png
+  banner_img: https://cdn.jsdelivr.net/gh/sineks/sineks.github.io@hexoimgs/img/202112111645303.jpeg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -834,7 +834,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/default.png
+  banner_img: https://cdn.jsdelivr.net/gh/sineks/sineks.github.io@hexoimgs/img/202112111645303.jpeg
   banner_img_height: 80
   banner_mask_alpha: 0.3
   subtitle:
