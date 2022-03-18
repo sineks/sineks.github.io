@@ -42,7 +42,7 @@
 
 
 
-
+<link rel="dns-prefetch" href="sineks-waline-9uaq0kt0g-sineks.vercel.app">
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -205,6 +205,20 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2020/nextcloudupdate/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/2020/nextcloudupdate/" data-xid="/2020/nextcloudupdate/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 </div>
 
         </div>
@@ -275,6 +289,20 @@
       <time title="创建时间：2020-03-18 20:30:41" itemprop="dateCreated datePublished" datetime="2020-03-18T20:30:41+08:00">2020-03-18</time>
     </span>
 
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2020/hexoblogcommand/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/2020/hexoblogcommand/" data-xid="/2020/hexoblogcommand/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 </div>
 
@@ -357,6 +385,20 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2020/RecordofCreatBlogWithHexo/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/2020/RecordofCreatBlogWithHexo/" data-xid="/2020/RecordofCreatBlogWithHexo/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 </div>
 
         </div>
@@ -433,6 +475,20 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2020/firstpost/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/2020/firstpost/" data-xid="/2020/firstpost/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 </div>
 
         </div>
@@ -501,6 +557,15 @@
 
 
 
-
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"sineks-waline-9uaq0kt0g-sineks.vercel.app","placeholder":"请文明评论呀","avatar":"mm","pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"meta":["nick","mail","link"],"libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","el":"#waline-comments","path":"/page/2/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script>
 </body>
 </html>

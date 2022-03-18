@@ -42,7 +42,7 @@
 
 
 
-
+<link rel="dns-prefetch" href="sineks-waline-9uaq0kt0g-sineks.vercel.app">
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -241,6 +241,15 @@
 
 
 
-
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"sineks-waline-9uaq0kt0g-sineks.vercel.app","placeholder":"请文明评论呀","avatar":"mm","pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"meta":["nick","mail","link"],"libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","el":"#waline-comments","path":"/tags/picgo/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script>
 </body>
 </html>
