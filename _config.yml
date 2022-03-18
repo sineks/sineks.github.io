@@ -55,7 +55,7 @@ pagination_dir: page
 include: null
 exclude: null
 ignore: null
-theme: fluid
+theme: next
 deploy:
   - type: git
     repository: git@github.com:sineks/sineks.github.io.git
